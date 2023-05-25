@@ -18,6 +18,12 @@ class _LoggedInPageState extends State<LoggedInPage> {
   Position? _position;
   String? _currentAddress;
 
+  @override
+  void initState() {
+    _getCurrentLocation(setState);
+    super.initState();
+  }
+
   void _getCurrentLocation(void Function(void Function()) setState) async {
     Position position = await determinePosition();
     final prefs = await SharedPreferences.getInstance();
@@ -121,7 +127,7 @@ class _LoggedInPageState extends State<LoggedInPage> {
                                             borderRadius:
                                                 BorderRadius.circular(10.0))),
                                     onPressed: () {
-                                      _getCurrentLocation(setState);
+                                      // _getCurrentLocation(setState);
                                     },
                                     icon: const Icon(Icons.location_on),
                                     label: const Text("Click to report duty")),
@@ -200,3 +206,4 @@ class _LoggedInPageState extends State<LoggedInPage> {
     );
   }
 }
+// 
